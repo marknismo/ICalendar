@@ -1,0 +1,28 @@
+# filename of the calendar to copy
+inputFile=wk3.ics
+
+# name of the output file
+outputFile=x.ics
+
+# timezone of the target calendar: e.g. UTC+08:00
+targetTimezone=UTC+08:00
+
+# start date in the timezone of the target calendar e.g. yyyyMMdd
+targetRefDate=20200406
+
+# reference start time in the timezone of the target calendar e.g. 08:00
+targetRefTime=08:00
+
+# timezone of the source calendar: e.g. UTC-07
+sourceTimezone=UTC-07
+
+# start date in the source calendar: e.g. yyyyMMdd
+sourceRefDate=20191216
+
+# reference start time of the source calendar: e.g. 10:00
+sourceRefTime=10:00
+
+# organizer email
+organizer_email=test@localhost
+
+
