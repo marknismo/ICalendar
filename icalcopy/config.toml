@@ -21,8 +21,3 @@ sourceRefDate=20191216
 
 # reference start time of the source calendar: e.g. 10:00
 sourceRefTime=10:00
-
-# organizer email
-organizer_email=test@localhost
-
-

@@ -15,9 +15,6 @@ class UserInput(){
     var inputFile:String=""
         private set
 
-    var organizer_email:String="email@localhost"
-        private set
-
     var sourceTimezone:String=""
         private set
 
@@ -69,7 +66,6 @@ class UserInput(){
                "sourceTimezone" ->  sourceTimezone=value
                "sourceRefDate" ->  sourceRefDate=value
                "sourceRefTime" ->  sourceRefTime=value
-               "organizer_email" ->  organizer_email=value
             }
         }
     }

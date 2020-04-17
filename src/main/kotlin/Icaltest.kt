@@ -6,8 +6,8 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import net.fortuna.ical4j.data.CalendarBuilder as IcalCalendarBuilder
 import net.fortuna.ical4j.data.CalendarOutputter as IcalCalendarOutputter
-import net.fortuna.ical4j.model.property.Organizer as IcalOrganizer
 import net.fortuna.ical4j.util.RandomUidGenerator as IcalRandomUidGenerator
+import net.fortuna.ical4j.util.CompatibilityHints as IcalCompatibilityHints
 import xyz.markclin.dateTime.*
 import xyz.markclin.data.EventData
 import xyz.markclin.data.UserInput
@@ -15,6 +15,7 @@ import xyz.markclin.data.UserInput
 
 
 fun main(args: Array<String>) {
+
 
     val builder = IcalCalendarBuilder()
     val ug = IcalRandomUidGenerator()
@@ -31,7 +32,6 @@ fun main(args: Array<String>) {
     val targetZone = userInput.targetTimezone.toZoneId()
     val targetRefDateZdt = ("${userInput.targetRefDate}${userInput.targetRefTime}".toUserZonedDateTime(targetZone))
     val sourceRefDateZdt = ("${userInput.sourceRefDate}${userInput.sourceRefTime}".toUserZonedDateTime(sourceZone))
-    val email = userInput.organizer_email
 
 
     //initialize EventData
@@ -44,7 +44,6 @@ fun main(args: Array<String>) {
     )
 
     for (meeting in imported_calendar.getComponents()) {
-        meeting.getProperties().add(IcalOrganizer("mailto:$email"))
         for (property in meeting.getProperties()) {
             when (property.getName()) {
                 "UID" -> property.setValue(ug.generateUid().getValue())
@@ -72,7 +71,7 @@ fun main(args: Array<String>) {
         }
     }
 
-
+    IcalCompatibilityHints.setHintEnabled(IcalCompatibilityHints.KEY_RELAXED_VALIDATION, true)
     outputter.output(imported_calendar, fout)
     fin.close()
     fout.close()
